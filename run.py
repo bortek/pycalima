@@ -25,7 +25,7 @@ from pycalima.Calima import Calima
 # Pincode is found on the backside of the manual or on one of the 
 # feet of the motor plug component
 fan = Calima("58:2b:db:00:7b:a2", "03155106")
-appliedSettings = 0
+settingsApplied = 0
 
 try:
 #  print(fan.getAlias())
@@ -37,9 +37,9 @@ try:
   if fan.getIsClockSet() == "02":
     # Lets preconfigure Calima by setting these values
 
-    # Set appliedSettings to 1 since we are applying the settings
+    # Set settingsApplied to 1 since we are applying the settings
     # We then output its value at the bottom so we know if there was a power cycle
-    appliedSettings = 1
+    settingsApplied = 1
   
     # Start off by setting time and then wait 2 seconds for it to settle before polling for time
     fan.setTimeToNow()
@@ -63,7 +63,7 @@ try:
     #fan.getAutomaticCycles()
   
     # Setting Silent hours
-    fan.setSilentHours(1,22,0,6,0)
+    fan.setSilentHours(1,22,30,6,30)
     #fan.getSilentHours()
   
     # Set trickle days
@@ -72,14 +72,14 @@ try:
 
 
   # Need to iterate through namedtuple and print its contents
-  # concatenating appliedSettings value and prefixing with timestamp without newline
+  # concatenating settingsApplied value and prefixing with timestamp without newline
   currentState = fan.getStateShort()
   timeStamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S ')
   print(timeStamp,end='')
 
   for item in currentState._fields:
     print("{}={} ".format(item,getattr(currentState, item)),end='')
-  print("appliedSettings={}".format(appliedSettings))
+  print("settingsApplied={}".format(settingsApplied))
 
 
 
