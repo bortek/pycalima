@@ -47,7 +47,7 @@ try:
     #fan.getTime()
   
     # Setting Fan speed, I am not using light sensor therefore same value in fields 2 and 3
-    fan.setFanSpeedSettings(2250,975,975)
+    fan.setFanSpeedSettings(2250,975,1500)
 
     # Sets humidity sensivitity and light sensitivity. If set to 0 then sensor triggering will be off
     fan.setSensorsSensitivity(2,0)
@@ -63,7 +63,7 @@ try:
     #fan.getAutomaticCycles()
   
     # Setting Silent hours
-    fan.setSilentHours(1,22,30,6,30)
+    fan.setSilentHours(1,23,15,6,30)
     #fan.getSilentHours()
   
     # Set trickle days
